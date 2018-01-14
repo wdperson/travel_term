@@ -1,7 +1,8 @@
 /* eslint-disable import/default */
 import React from 'react'
-import MonthCell from './MonthCell'
+import Month from './Month'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
 export default class Calendar extends React.Component {
   isInRange (month) {
@@ -36,9 +37,9 @@ export default class Calendar extends React.Component {
       dateStart.add(1, 'month')
     }
     return (
-      <div>
-        { months.map(month =>
-          <MonthCell
+      <div className="month_wrapper">
+        { months.map((month, index) =>
+          <Month
             key={month}
             month={month}
             isInRange={ this.isInRange(month) }
@@ -55,10 +56,16 @@ export default class Calendar extends React.Component {
 
     return (
       <div>
-        {year}
+        <div className='year'>{year}</div>
         { this.renderMonths() }
-        <br/><br/>
       </div>
     )
   }
+}
+
+Calendar.propTypes = {
+  startMonth: PropTypes.instanceOf(moment).isRequired,
+  endMonth: PropTypes.instanceOf(moment).isRequired,
+  year: PropTypes.string.isRequired,
+  selectMonth: PropTypes.func.isRequired
 }

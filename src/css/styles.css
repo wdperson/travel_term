@@ -1,12 +1,42 @@
 .end_month {
   background-color: teal;
+  color: white !important;
 }
 
 .start_month {
   background-color: teal;
+  color: white !important;
 }
 
 .in_range {
-  background-color: lightgray;
+  background-color: #f5f5f5;
 }
 
+.year {
+  font-family: Arial;
+  font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 4px;
+}
+
+.month {
+  width: 40px;
+  height: 41px;
+  font-family: Arial;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  color: gray;
+  border-right: 0.5px solid #cecece;
+  border-bottom: 0.5px solid #cecece;
+}
+
+.month_wrapper {
+  width: 243px;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
+  border-left: 0.5px solid #cecece;
+  border-top: 0.5px solid #cecece;
+}
