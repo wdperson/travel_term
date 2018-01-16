@@ -32,7 +32,7 @@ export default class Calendar extends React.Component {
     let dateEnd = moment(new Date(year, 12))
     let months = []
 
-    while (dateEnd > dateStart) {
+    while (dateEnd.valueOf() > dateStart.valueOf()) {
       months.push(dateStart.format('YYYY-MM-DD'))
       dateStart.add(1, 'month')
     }

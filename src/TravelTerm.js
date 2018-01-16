@@ -1,9 +1,7 @@
 /* eslint-disable import/default */
 import React from 'react'
 import Calendar from './components/Calendar'
-import Moment from 'moment'
-import { extendMoment } from 'moment-range'
-const moment = extendMoment(Moment)
+import moment from 'moment'
 
 export default class TravelTerm extends React.Component {
   constructor (props, context) {

@@ -1,7 +1,7 @@
 /* eslint-disable import/default */
 import React from 'react'
 import moment from 'moment'
-import styles from '../css/styles.css'
+import '../css/styles.css'
 
 export default class Month extends React.Component {
   buttonStyles () {
@@ -21,7 +21,7 @@ export default class Month extends React.Component {
   render () {
     const { month } = this.props
     return (
-      <div className={this.buttonStyles() + " month"} onClick={ () => this.props.selectMonth(month) }>
+      <div className={`${this.buttonStyles()} month`} onClick={ () => this.props.selectMonth(month) }>
         {moment.monthsShort(moment(month).month())}
       </div>
     )
