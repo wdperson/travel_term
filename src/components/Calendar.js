@@ -5,24 +5,17 @@ import moment from 'moment'
 import PropTypes from 'prop-types'
 
 export default class Calendar extends React.Component {
-  isInRange (month) {
+  style (month) {
     const { startMonth, endMonth } = this.props
     if (moment(month).isBetween(startMonth, endMonth)) {
-      return true
+      return 'in_range'
     }
-  }
-
-  isStartMonth (month) {
-    const { startMonth } = this.props
     if (moment(month).isSame(startMonth)) {
-      return true
+      return 'start_month'
     }
-  }
 
-  isEndMonth (month) {
-    const { endMonth } = this.props
     if (moment(month).isSame(endMonth)) {
-      return true
+      return 'end_month'
     }
   }
 
@@ -42,10 +35,8 @@ export default class Calendar extends React.Component {
           <Month
             key={month}
             month={month}
-            isInRange={ this.isInRange(month) }
-            isStartMonth={ this.isStartMonth(month) }
-            isEndMonth={ this.isEndMonth(month) }
-            selectMonth={ (month) => this.props.selectMonth(month) }
+            style={this.style(month)}
+            selectMonth={this.props.selectMonth }
           />)}
       </div>
     )
@@ -56,7 +47,9 @@ export default class Calendar extends React.Component {
 
     return (
       <div>
-        <div className='year'>{year}</div>
+        <div className='year'>
+          {year}
+        </div>
         { this.renderMonths() }
       </div>
     )
@@ -64,8 +57,8 @@ export default class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
-  startMonth: PropTypes.instanceOf(moment).isRequired,
-  endMonth: PropTypes.instanceOf(moment).isRequired,
+  startMonth: PropTypes.instanceOf(moment),
+  endMonth: PropTypes.instanceOf(moment),
   year: PropTypes.string.isRequired,
   selectMonth: PropTypes.func.isRequired
 }

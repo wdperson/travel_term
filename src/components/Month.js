@@ -2,28 +2,21 @@
 import React from 'react'
 import moment from 'moment'
 import '../css/styles.css'
+import PropTypes from 'prop-types'
 
 export default class Month extends React.Component {
-  buttonStyles () {
-    const { isInRange, isStartMonth, isEndMonth } = this.props
-
-    if (isInRange === true) {
-      return 'in_range'
-    } else if (isStartMonth === true) {
-      return 'start_month'
-    } else if (isEndMonth === true) {
-      return 'end_month'
-    } else {
-      return ''
-    }
-  }
-
   render () {
-    const { month } = this.props
+    const { month, style, selectMonth } = this.props
     return (
-      <div className={`${this.buttonStyles()} month`} onClick={ () => this.props.selectMonth(month) }>
+      <div className={`${style} month`} onClick={selectMonth(month)}>
         {moment.monthsShort(moment(month).month())}
       </div>
     )
   }
+}
+
+Month.propTypes = {
+  month: PropTypes.string,
+  style: PropTypes.string,
+  selectMonth: PropTypes.func.isRequired
 }

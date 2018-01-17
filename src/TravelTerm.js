@@ -2,17 +2,18 @@
 import React from 'react'
 import Calendar from './components/Calendar'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 
 export default class TravelTerm extends React.Component {
-  constructor (props, context) {
-    super(props, context)
+  constructor (props) {
+    super(props)
     this.state = {
       startMonth: null,
       endMonth: null
     }
   }
 
-  selectMonth (month) {
+  selectMonth = (month) => (e) => {
     let {startMonth, endMonth} = this.state
     let newStartMonth = startMonth
     let newEndMonth = endMonth
@@ -22,10 +23,8 @@ export default class TravelTerm extends React.Component {
     if ((endMonth === null) || (moment(month).isAfter(endMonth)) || (!moment(endMonth).isSame(startMonth))) {
       newEndMonth = moment(month)
     }
-    if (moment(month).isSame(startMonth)) {
+    if ((moment(month).isSame(startMonth)) && (moment(month).isSame(endMonth))) {
       newStartMonth = null
-    }
-    if (moment(month).isSame(endMonth)) {
       newEndMonth = null
     }
     this.setState({
@@ -35,13 +34,18 @@ export default class TravelTerm extends React.Component {
   }
 
   render () {
-    const years = ['2017', '2018', '2019']
     let {startMonth, endMonth} = this.state
+    const {years} = this.props
     return (
       <div>
         { years.map(year =>
-          <Calendar key={year} year={year} startMonth={startMonth} endMonth={endMonth} selectMonth={(month) => this.selectMonth(month)}/>)}
+          <Calendar key={year} year={year} startMonth={startMonth} endMonth={endMonth} selectMonth={this.selectMonth} />
+        )}
       </div>
     )
   }
+}
+
+TravelTerm.propTypes = {
+  years: PropTypes.array
 }
