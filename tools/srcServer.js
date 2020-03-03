@@ -1,8 +1,8 @@
-import express from 'express'
-import webpack from 'webpack'
-import path from 'path'
-import config from '../webpack.config.js'
-import open from 'open'
+const express = require('express')
+const webpack = require('webpack')
+const path = require('path')
+const config = require('../webpack.config.js')
+const open = require('open')
 
 const port = 3001
 const app = express()
