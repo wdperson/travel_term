@@ -7,7 +7,8 @@
     "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "react": "16.2.0",
@@ -22,11 +23,11 @@
     "@babel/plugin-proposal-class-properties": "7.8.3",
     "@babel/polyfill": "7.8.3",
     "@babel/preset-flow": "7.8.3",
+    "@babel/preset-react": "7.8.3",
     "@babel/register": "7.8.6",
     "babel-eslint": "8.2.1",
-    "babel-preset-env": "1.6.1",
     "babel-loader": "8.0.6",
-    "@babel/preset-react": "7.8.3",
+    "babel-preset-env": "1.6.1",
     "css-loader": "3.4.2",
     "eslint": "4.15.0",
     "eslint-config-standard": "10.2.1",
@@ -37,6 +38,7 @@
     "eslint-plugin-standard": "3.0.1",
     "eslint-watch": "6.0.1",
     "express": "4.16.2",
+    "minimist": "^1.2.5",
     "moment": "2.20.1",
     "npm-run-all": "4.1.2",
     "open": "7.0.2",
@@ -44,6 +46,9 @@
     "webpack": "4.42.0",
     "webpack-dev-middleware": "1.12.2",
     "webpack-hot-middleware": "2.21.0"
+  },
+  "resolutions": {
+    "minimist": "^1.2.5"
   },
   "author": "Mike Riley"
 }
